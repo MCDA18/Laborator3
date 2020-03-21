@@ -107,6 +107,7 @@ int main()
     //x_putere_n(2, 5);
     secventa_numere_diferite(v1, m);
     //nr_prim_exponent_n(24, 2);
+    std::cout << "Ana are mere";
 
 
 }
