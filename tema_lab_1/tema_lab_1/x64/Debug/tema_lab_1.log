@@ -1,0 +1,3 @@
+﻿  tema_lab_1.cpp
+C:\Users\Darius\source\repos\tema_lab_1\tema_lab_1\tema_lab_1.cpp(36,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  tema_lab_1.vcxproj -> C:\Users\Darius\source\repos\tema_lab_1\x64\Debug\tema_lab_1.exe
