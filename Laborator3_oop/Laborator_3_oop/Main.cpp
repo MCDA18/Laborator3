@@ -11,9 +11,11 @@ int main()
 	tree->insert(8);
 	tree->insert(3);
 	tree->insert(2);
-	tree->delete1(8);
-	cout<<tree->search(4);
-
-
-
-}
+	//tree->delete1(8);
+	tree->inorder_print();
+	tree->postorder_print();
+	tree->preorder_print();
+	cout <<"Inaltimea: "<< tree->Height() << endl;
+	cout <<"Numarul de noduri: "<< tree->CountNod() << endl;
+	cout <<"Numarul de muchii: " <<tree->CountMuchi() << endl;
+};

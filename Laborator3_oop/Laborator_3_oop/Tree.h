@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Knoten.h"
+#include <string>
 using namespace std;
 
 
@@ -16,4 +17,16 @@ public:
 	Knoten* delete1(int v, Knoten* Tree);
 	Knoten* search(int v);
 	Knoten* delete1(int v);
+	void inorder_print();
+	void inorder_print(Knoten* Tree);
+	void postorder_print();
+	void postorder_print(Knoten* Tree);
+	void preorder_print();
+	void preorder_print(Knoten* Tree);
+	int Height();
+	int Height(Knoten* Tree);
+	int CountNod();
+	int CountNod(Knoten* Tree);
+	int CountMuchi();
+	int CountMuchi(Knoten* Tree);
 };
