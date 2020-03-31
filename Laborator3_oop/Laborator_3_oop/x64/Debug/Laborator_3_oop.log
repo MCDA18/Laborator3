@@ -1,2 +1,4 @@
 ﻿  Main.cpp
-  Laborator_3_oop.vcxproj -> C:\Users\Mihai\Documents\GitHub\Laborator3\Laborator3_oop\x64\Debug\Laborator_3_oop.exe
+C:\Users\Darius\Documents\GitHub\Laborator3\Laborator3_oop\Laborator_3_oop\Main.cpp(5,1): warning C4005: 'assert': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\assert.h(35): message : see previous definition of 'assert'
+  Laborator_3_oop.vcxproj -> C:\Users\Darius\Documents\GitHub\Laborator3\Laborator3_oop\x64\Debug\Laborator_3_oop.exe

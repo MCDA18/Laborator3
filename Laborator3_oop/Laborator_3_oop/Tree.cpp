@@ -50,63 +50,66 @@ void Tree::insert(int key)//key ii valoarea data de utilizator(nodul)
         tree_head->right_son = NULL;
     }
 }
-Knoten* Tree::delete1(int key, Knoten* frunze)
+Knoten* minValueNode(Knoten* node)
 {
-    if (frunze != NULL)
-    {
-        //merge recursiv inapoi pana gaseste,daca exista
-        if (key == frunze->val)
-        {
-            delete frunze;
-        }
-        if (key < frunze->val)
-        {
-            return Tree::delete1(key, frunze->left_son);
-        }
-        else
-        {
-            return Tree::delete1(key, frunze->right_son);
-        }
-    }
+    Knoten* current = node;
+
+    /* loop down to find the leftmost leaf */
+    while (current && current->left_son != NULL)
+        current = current->left_son;
+
+    return current;
+}
+Knoten* Tree::delete1( int key, Knoten* tree_head)
+{
+ 
+    if (tree_head == NULL) return tree_head;
+
+    // If the key to be deleted is smaller than the root's key, 
+    // then it lies in left subtree 
+    if (key < tree_head->val)
+        tree_head->left_son = delete1(key,tree_head->left_son);
+
+    // If the key to be deleted is greater than the root's key, 
+    // then it lies in right subtree 
+    else if (key > tree_head->val)
+        tree_head->right_son = delete1(key,tree_head->right_son);
+
+    // if key is same as root's key, then This is the node 
+    // to be deleted 
     else
-        return NULL;//asta returneaza daca nu exista,nu poate fi sters
-
-}
-Knoten* Tree::delete1(int key)
-{
-    return delete1(key, tree_head);
-}
-//functia search care va returna locatia unde se afla un nod...in cazu in care exista
-Knoten *Tree::search(int key, Knoten* frunze)
-{
-    if (frunze != NULL)
+    {
+        // node with only one child or no child 
+        if (tree_head->left_son == NULL)
         {
-        //merge recursiv inapoi pana gaseste,daca exista
-            if (key == frunze->val) 
-            {
-                return frunze;
-            }
-            if (key < frunze->val)
-            {
-                return Tree::search(key, frunze->left_son);
-            }
-            else 
-            {
-            return Tree::search(key, frunze->right_son);
-            }
+            Knoten* temp = tree_head->right_son;
+            free(tree_head);
+            return temp;
         }
-    else 
-        return NULL;//asta returneaza daca nu este in arbore nodul dat de utilizator
+        else if (tree_head->right_son == NULL)
+        {
+            Knoten* temp = tree_head->left_son;
+            free(tree_head);
+            return temp;
+        }
 
-}
-Knoten* Tree::search(int key) 
-{
-    return search(key,tree_head);
-}
+        // node with two children: Get the inorder successor (smallest 
+        // in the right subtree) 
+       Knoten* temp = minValueNode(tree_head->right_son);
 
+        // Copy the inorder successor's content to this node
+        tree_head->val = temp->val;
+
+        // Delete the inorder successor
+        tree_head->right_son = delete1(temp->val,tree_head->right_son);
+        }
+        return tree_head;
+    
+}
 /// Tranversarea inorder ofera noduri in oridine ne-descrescatoare 
 
-void Tree::inorder_print() {
+void Tree::inorder_print() 
+{
     inorder_print(tree_head);
     cout << "\n";
 }
